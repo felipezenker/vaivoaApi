@@ -41,6 +41,12 @@ namespace apiVaiVoa.Controllers
       var cartoes = await context.CarataoVirtual
       .Where(x => x.Email == email)
       .ToListAsync();
+
+      if (!cartoes.Any())
+      {
+        return NotFound("Nenhum cartão encontrado, solicite um novo cartão e tente novamente!");
+      }
+
       return cartoes;
     }
   }
